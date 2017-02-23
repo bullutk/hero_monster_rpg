@@ -12,17 +12,19 @@ class Battle(object):
             time.sleep(1.5)
             print "-----------------------"
             print "What do you want to do?"
-            os.system("say --voice=Maged 'fight or flee?'")
+            os.system("say --voice=Maged 'fight or flee?' &")
             print "1. fight %s" % enemy.name
             print "2. do nothing"
             print "3. flee"
             print "> ",
             input = int(raw_input())
             if input == 1:
+                os.system("say --voice=Maged 'FIGHT!!'")
                 hero.attack(enemy)
             elif input == 2:
                 pass
             elif input == 3:
+                os.system("say --voice=Maged 'RUN AWAY!!'")
                 print "Goodbye."
                 exit(0)
             else:
@@ -32,7 +34,7 @@ class Battle(object):
         if hero.alive():
             print "You defeated the %s" % enemy.name
             hero.won_coins(enemy)
-            os.system("say --voice=Maged 'You won extra coins!'")    
+            os.system("say --voice=Maged 'Enemy defeated, you won extra coins!'")    
             return True
         else:
             print "YOU LOSE!"
